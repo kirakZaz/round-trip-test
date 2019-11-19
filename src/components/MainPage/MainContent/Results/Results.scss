@@ -1,0 +1,85 @@
+@import "../../../../globalStyles/colorsConfig";
+@import "../../../../globalStyles/mixins";
+
+.Results{
+  width: 100%;
+  font-size: 14px;
+
+  .flightItem{
+    margin-bottom: 30px;
+    background: #fff;
+    box-shadow: 0 0 4px 0px #878787;
+    border-radius: 5px;
+
+    .flightInfo{
+      font-size: 12px;
+      padding: 20px;
+      border-left: 1px solid #ddd;
+      position: relative;
+      .imageItem{
+        .baggage{
+          position: absolute;
+          height: 20px;
+          background: #cccedf;
+          width: 90px;
+          top: -30px;
+          right: 0;
+          border-radius: 3px;
+          font-size: 11px;
+          line-height: 2;
+          text-align: right;
+          padding: 0 7px;
+          box-shadow: 0 0 3px 0px #474747;
+        }
+      }
+
+      .col-6 span {
+        display: block;
+      }
+      .col-2 span{
+        display: block;
+        //width: 50px;
+        //height: 50px;
+      }
+
+      .col-3 span {
+        display: block;
+      }
+      span.timeSize {
+        font-size: 16px;
+      }
+
+    }
+    .flightThere {
+      border-bottom: 1px solid #ddd;
+    }
+  }
+  .totalSide{
+      padding-top: 30px;
+    button{
+      height: 36px;
+      margin-top: 21px;
+      border-radius: 17px;
+      line-height: 1;
+      width: 80%;
+      background: $light-blue !important;
+      border: 1px solid $light-blue !important;
+
+      &:hover{
+        background: $orange !important;
+        border: 1px solid orange !important;
+
+      }
+      @include smScreen{
+        font-size: 14px;
+        width: 100%;
+      }
+    }
+    .totalSide-price{
+      font-size: 24px;
+      font-weight: 600;
+      color: $primary-blue;
+    }
+
+  }
+}

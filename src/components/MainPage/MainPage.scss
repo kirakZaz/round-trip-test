@@ -1,0 +1,33 @@
+@import "../../globalStyles/colorsConfig";
+@import "../../globalStyles/mixins";
+
+.MainPage{
+  background: #e2e2e2;
+  min-height: 100vh;
+
+  .filterButton{
+    width: 170px;
+    margin-right: 15px;
+    height: 35px;
+    background: #fff;
+    color: $primary-blue;
+    line-height: 1;
+    border-color:$primary-blue;
+  }
+  .asideFilterMobile{
+    //display: none;
+    @include smScreen{
+      //display: block;
+    }
+  }
+
+  .asideColumn{
+
+    @include smScreen{
+      top: -20px;
+      z-index: 99999;
+      left: -15px;
+      width: 60%;
+    }
+  }
+}

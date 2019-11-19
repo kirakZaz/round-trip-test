@@ -1,0 +1,67 @@
+@import "../../../../globalStyles/colorsConfig";
+
+.Aside{
+  margin-top: 20px;
+  border-radius: 5px;
+  .borderBottom{
+    border-bottom: 1px solid #e2e2e2;
+    a{
+      font-size: 13px;
+      color: red;
+      display: block;
+      text-align: right;
+      text-decoration: underline;
+      margin-top: 5px;
+    }
+  }
+  &>.container{
+    padding: 0 25px;
+    .row{
+      margin-right: -25px;
+      margin-left: -25px;
+      padding-bottom: 15px;
+    }
+  }
+  .asideCheckbox{
+    display: flex;
+    font-size: 14px;
+    justify-content: space-between;
+    .checkBoxes{
+      margin-bottom: 0;
+    }
+    .form-check {
+      padding: 0 1.25rem 0 0;
+      margin-left: 20px;
+
+      .form-check-input {
+        right: 3px;
+        margin-top: 4px;
+      }
+    }
+  }
+
+
+  width: 100%;
+  border: 1px solid #9e9e9e;
+  background: #fff;
+  box-shadow: 0px 0 3px 1px #9e9e9e;
+
+  .asideTitle{
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+    text-align: right;
+    width: 100%;
+    display: block;
+    margin-top: 15px;
+  }
+  .asideSecondaryTitle{
+    font-size: 14px;
+    font-weight: 400;
+    color: #000;
+    text-align: right;
+    width: 100%;
+    display: block;
+    margin-top: 10px;
+  }
+}

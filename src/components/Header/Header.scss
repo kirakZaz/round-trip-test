@@ -1,0 +1,80 @@
+@import '../../globalStyles/colorsConfig';
+@import '../../globalStyles/mixins';
+
+.header {
+  font-family: 'Assistant', sans-serif;
+  border-bottom: 1px solid $primary-blue;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  z-index: 999;
+  background: #fff;
+  .container, .row{
+    height: 100%;
+  }
+  .row{
+    align-items: center;
+    height: 100%;
+  }
+    .logo{
+      padding: 0 15px 0 55px;
+      @include mdScreen{
+        padding: 0;
+      }
+      img{
+        max-width: 100%;
+      }
+    }
+    .navigation {
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: flex-start;
+        font-size: 16px;
+        font-weight: 600;
+        text-align: center;
+
+        li {
+          a {
+            color: $primary-blue;
+            padding: 0 19px 20px 19px;
+            @include mdScreen {
+              padding: 0 10px;
+            }
+            &:hover {
+              color: $light-blue;
+              text-decoration: none;
+              border-bottom: 9px solid $light-blue;
+            }
+          }
+        }
+      }
+    }
+  .settings {
+    display: flex;
+
+    .dropdown button {
+      background: #fff0;
+      border: 1px solid $light-gray;
+      padding: 5px;
+      border-radius: 2px;
+      margin: 0 0 0 10px;
+      font-size: 16px;
+      line-height: 1;
+      color: $primary-blue;
+      width: 73px;
+    }
+
+    .dropdown-toggle::after {
+      content: '\f107';
+      float: right;
+      border: 0;
+      margin: 0;
+      font-family: "FontAwesome";
+    }
+  }
+}

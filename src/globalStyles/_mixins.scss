@@ -1,0 +1,21 @@
+$lgScreen: 1601px;
+$mdScreen: 1200px;
+$smScreen: 990px;
+
+@mixin lgScreen {
+  @media (max-width: $lgScreen) {
+    @content;
+  }
+}
+
+@mixin mdScreen {
+  @media (max-width: $mdScreen) {
+    @content;
+  }
+}
+
+@mixin smScreen {
+  @media (max-width: $smScreen) {
+    @content;
+  }
+}

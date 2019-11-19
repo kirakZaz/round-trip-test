@@ -1,0 +1,51 @@
+@import "../../globalStyles/colorsConfig";
+
+.rc-slider{
+  box-shadow: none;
+  height: 3px;
+  margin-top: 15px;
+  margin-bottom: 30px;
+  margin-left: 3%;
+  margin-right: 3%;
+  width: auto;
+  .rc-slider-track{
+    background: $primary-blue
+  }
+  .rc-slider-handle{
+    width: 11px;
+    height: 11px;
+    background: $orange;
+    box-shadow: none;
+    margin-top: -4px;
+    border-color: $orange;
+  }
+}
+
+
+.customSlider{
+  box-shadow: none;
+  width: 90%;
+  margin: 5px 0;
+  height: 3px;
+  .rangeslider__fill{
+    box-shadow: none;
+    background: $primary-blue;
+  }
+  .rangeslider__handle {
+    width: 10px;
+    height: 10px;
+    box-shadow: none;
+    border: 0;
+    &::after{
+      content: '';
+      top: 0;
+      left: 0;
+      width: 10px;
+      height: 10px;
+      background: $orange;
+      box-shadow: none;
+
+    }
+  }
+
+}
