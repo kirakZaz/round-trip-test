@@ -45,7 +45,6 @@ class MainPage extends React.Component {
 
 
     render(){
-        console.log(this.state)
         const { showButton, asideClassAbsolute, showAside } = this.state;
         const displayAside = showAside ? "block" : "none";
         const position = asideClassAbsolute ? "fixed" : "relative";
