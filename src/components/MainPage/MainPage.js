@@ -14,11 +14,11 @@ class MainPage extends React.Component {
 
         this.state = {
             showAside: "block",
-            hideNav: false,
             showButton: "none",
             asideClassAbsolute: false
         }
     }
+
     handleShowAside = () => {
         const { showAside } = this.state;
         this.setState({
@@ -35,7 +35,6 @@ class MainPage extends React.Component {
     resize() {
         if(window.innerWidth <= 990){
             this.setState({
-                hideNav: window.innerWidth <= 990,
                 showButton: "block",
                 showAside: false
             });

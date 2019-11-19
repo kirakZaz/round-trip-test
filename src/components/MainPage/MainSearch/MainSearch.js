@@ -154,7 +154,7 @@ class MainSearch extends React.Component {
 
     peopleCount = () => {
         return(
-            <Form.Group as={Col}  className="peopleCount col-lg-1 col-md-3 col-xs-6">
+            <Form.Group as={Col}  className="peopleCount col-xl-1 col-lg-3 col-md-6">
                 <Form.Label className={"color-white font14 mb-0"}>נוסיעם</Form.Label>
                 <Dropdown>
                     <Dropdown.Toggle variant="" dir={'ltr'} id="dropdown-basic">
@@ -191,12 +191,12 @@ class MainSearch extends React.Component {
                             this.destinationsRadio()
                         }
                         <Form.Row style={{minHeight: "66px", marginTop: "8px"}}>
-                                <Form.Group as={Col} xs="12" md="12" lg={6} controlId="validationFormik01">
+                                <Form.Group as={Col} md="12" lg="12" xl={6} controlId="validationFormik01">
                                     {
                                         this.destinationPlaces()
                                     }
                                 </Form.Group>
-                                <Form.Group as={Col} xs="12" md="6" lg="3">
+                                <Form.Group as={Col} sm="12" lg="6" xl="3">
                                     {
                                         this.destinationTimes()
                                     }
@@ -205,7 +205,7 @@ class MainSearch extends React.Component {
                                     this.peopleCount()
                                 }
 
-                            <Form.Group as={Col} xs={6} md={3} lg={2} className="sendButton">
+                            <Form.Group as={Col} sm={6} lg={3} xl={2} className="sendButton">
                                 <Button>חיפוש</Button>
                             </Form.Group>
                             </Form.Row>
