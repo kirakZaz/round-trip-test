@@ -60,10 +60,10 @@ class MainPage extends React.Component {
                                     {!showAside ? "Filter" : "Close Filter"}
                                 </Button>
                             </div>
-                            <Col style={{"display": `${displayAside}`, "position": `${position}`}} className="asideColumn" md={12} lg={3}>
+                            <Col style={{"display": `${displayAside}`, "position": `${position}`}} className="asideColumn" xl={12} md={3} lg={3}>
                                 <Aside/>
                             </Col>
-                            <Col lg={9} md={12}>
+                            <Col xl={9} lg={9} md={12}>
                                 <Row><TopFiltering/></Row>
                                 <Row><Results/></Row>
                             </Col>
