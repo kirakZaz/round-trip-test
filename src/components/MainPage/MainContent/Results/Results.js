@@ -126,7 +126,8 @@ class Results extends React.Component {
     };
 
     checkByFilters = (_filter1, _filter2, _filter3, _filter4, _filter5) => {
-        const { flightHoursReturn, flightHoursThere, flightTimeReturn, flightTimeThere, pricesRange } = this.props.filterData
+        const { resultExamples } = data;
+        const { flightHoursReturn, flightHoursThere, flightTimeReturn, flightTimeThere, pricesRange } = this.props.filterData;
 
         const filter1 = _filter1.length <= 0 && pricesRange.length > 0 ? ["no data"] : _filter1;
         const filter2 = _filter2.length <= 0 && flightTimeThere.length > 0 ? ["no data"] : _filter2;
@@ -134,30 +135,17 @@ class Results extends React.Component {
         const filter4 = _filter4.length <= 0 && flightHoursThere.length > 0 ? ["no data"] : _filter4;
         const filter5 = _filter5.length <= 0 && flightHoursReturn.length > 0 ? ["no data"] : _filter5;
 
-
-        console.log(
-            "1",filter1,
-            "2",filter2,
-            "3",filter3,
-            "4",filter4,
-            "5",filter5)
-
-        const { resultExamples } = data;
-        const resultExamplesPricesValues = resultExamples.map(prices => { return prices.price});
+        const resultExamplesPricesValues = resultExamples.map(prices => { return prices.id});
 
         let filters = [];
 
         if(filter1.length > 0 && filter2.length <= 0  && filter3.length <= 0  && filter4.length <= 0  && filter5.length <= 0) {
             filters = filter1
         } else if(filter1.length <= 0) {
-
             filters = filter2.concat(filter3, filter4, filter5)
         } else {
             const filtersTocheck = filter2.concat(filter3, filter4, filter5)
-
-            const findAllDuplicates2 = this.find_duplicate_in_array(filtersTocheck);
             filters = _.intersectionWith(filtersTocheck, filter1, _.isEqual);
-            console.log("findAllDuplicates2 ", findAllDuplicates2)
         }
 
         const findAllDuplicates = this.find_duplicate_in_array(filters);
@@ -166,13 +154,12 @@ class Results extends React.Component {
         const duplicatesValues = _.intersectionWith(checkedDuplicates, resultExamplesPricesValues, _.isEqual);
         const filteredResult = duplicatesValues.map(x=>{
             return resultExamples.filter((f)=>{
-                return x === f.price
+                return x === f.id
             })
 
         });
         const clearFilteredResult = [];
         filteredResult.forEach((obj) => clearFilteredResult.push(...obj));
-
         return clearFilteredResult
     };
 
@@ -184,13 +171,13 @@ class Results extends React.Component {
             filtersHoursFlightReturn
         } = this.state;
 
-        const filteredPricesValues = filteredPrices.map(r => { return r.price });
-        const filtersTimeFlightThereValues = filtersTimeFlightThere.map(r => { return r.price });
-        const filtersTimeFlightReturnValues = filtersTimeFlightReturn.map(r => { return r.price });
+        const filteredPricesValues = filteredPrices.map(r => { return r.id });
+        const filtersTimeFlightThereValues = filtersTimeFlightThere.map(r => { return r.id });
+        const filtersTimeFlightReturnValues = filtersTimeFlightReturn.map(r => { return r.id });
 
 
-        const filtersHoursFlightThereValues = filtersHoursFlightThere.map(r => { return r.price });
-        const filtersHoursFlightReturnValues = filtersHoursFlightReturn.map(r => { return r.price });
+        const filtersHoursFlightThereValues = filtersHoursFlightThere.map(r => { return r.id });
+        const filtersHoursFlightReturnValues = filtersHoursFlightReturn.map(r => { return r.id });
 
         let resFinal = [];
 
@@ -208,8 +195,6 @@ class Results extends React.Component {
     };
 
     render(){
-        console.log("@", this.props)
-        console.log("$", this.state)
         const { resultsList } = this.state;
         return(
             <div className={"Results"}>
