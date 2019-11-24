@@ -20,7 +20,16 @@ class Aside extends React.Component {
             flightHoursThere: 12,
             flightHoursReturnString: "12:00",
             flightHoursThereString: "12:00",
+            checkedValues: {
+                "wizzAir": false,
+                "airFrance": false,
+                "lufthansa": false
+            }
+
+
+
         }
+        this.handleCheckbox = this.handleCheckbox.bind(this);
     }
 
     handleChangePrice = value => {
@@ -84,7 +93,30 @@ class Aside extends React.Component {
         }
     };
 
+    handleCheckbox = (e) => {
+        const { sendCheckboxValues } = this.props;
+        const { checkedValues } = this.state;
+        const name = e.target.name;
+        const isChecked = e.target.checked;
+
+
+        const values = {...this.state.checkedValues, [name]: isChecked}
+        // console.log("values", values)
+
+
+
+        this.setState(prevState => ({
+            checkedValues: {
+                ...prevState.checkedValues,
+                [name]: isChecked
+            }
+        }));
+
+        sendCheckboxValues(values)
+    };
+
     render(){
+        // console.log(this.state)
         const {
             priceValues,
             flightTimeThere,
@@ -92,9 +124,7 @@ class Aside extends React.Component {
             flightTimeReturnString,
             flightTimeThereString,
             flightHoursThere,
-            flightHoursReturn,
-            flightHoursThereString,
-            flightHoursReturnString
+            flightHoursReturn
         } = this.state;
         return(
             <div className={'Aside'}>
@@ -131,19 +161,34 @@ class Aside extends React.Component {
                             <span className={"asideTitle"}>חברות תעופה</span>
                             <div className={"asideCheckbox"}>
                                 <Form.Group className="checkBoxes">
-                                    <Form.Check label="Turkish Airlines" />
+                                    <Form.Check
+                                        label="Air France"
+                                        name='airFrance'
+                                        checked={this.state.airFranceIsChecked}
+                                        onChange={this.handleCheckbox}
+                                    />
                                 </Form.Group>
                                 <span>$539</span>
                             </div>
                             <div className={"asideCheckbox"}>
                                 <Form.Group className="checkBoxes">
-                                    <Form.Check label="Pegasus Airlines" />
+                                    <Form.Check
+                                        label="Wizz Air"
+                                        name='wizzAir'
+                                        checked={this.state.wizzAirIsChecked}
+                                        onChange={this.handleCheckbox}
+                                    />
                                 </Form.Group>
                                 <span>$602</span>
                             </div>
                             <div className={"asideCheckbox"}>
                                 <Form.Group className="checkBoxes">
-                                    <Form.Check label="KLM Royal Duthc" />
+                                    <Form.Check
+                                        label="Lufthansa"
+                                        name='lufthansa'
+                                        checked={this.state.lufthansaIsChecked}
+                                        onChange={this.handleCheckbox}
+                                    />
                                 </Form.Group>
                                 <span>$602</span>
                             </div>
@@ -260,7 +305,8 @@ const mapDispatchToProps = (dispatch) => {
         sendFlightTimeThereChanges: (value) => dispatch(filterAction.sendFlightTimeThereChanges(value)),
         sendFlightTimeReturnChanges: (value) => dispatch(filterAction.sendFlightTimeReturnChanges(value)),
         sendFlightHoursThereChanges: (value) => dispatch(filterAction.sendFlightHoursThereChanges(value)),
-        sendFlightHoursReturnChanges: (value) => dispatch(filterAction.sendFlightHoursReturnChanges(value))
+        sendFlightHoursReturnChanges: (value) => dispatch(filterAction.sendFlightHoursReturnChanges(value)),
+        sendCheckboxValues: (value) => dispatch(filterAction.sendCheckboxValues(value))
     }
 };
 

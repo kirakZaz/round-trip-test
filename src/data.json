@@ -64,6 +64,8 @@
         "flightHoursBack": "16 שעות 10 דקות",
         "airlineFrom": "images/air-france.JPG",
         "airlineTo": "/../../../../images/wizz.JPG",
+        "airlineFromValue": "airFrance",
+        "airlineToValue": "wizzAir",
         "baggage": true
 
       },
@@ -90,6 +92,8 @@
         "flightHoursBack": "26 שעות 0 דקות",
         "airlineFrom": "../../../../images/lufthansa.JPG",
         "airlineTo": "../../../../images/lufthansa.JPG",
+        "airlineFromValue": "airFrance",
+        "airlineToValue": "lufthansa",
         "baggage": false
 
       },
@@ -116,6 +120,8 @@
         "flightHoursBack": "16 שעות 10 דקות",
         "airlineFrom": "../../../../images/air-france.JPG",
         "airlineTo": "../../../../images/wizz.JPG",
+        "airlineFromValue": "airFrance",
+        "airlineToValue": "wizzAir",
         "baggage": true
 
       },
@@ -142,6 +148,8 @@
         "flightHoursBack": "4 שעות 40 דקות",
         "airlineFrom": "./images/air-france.JPG",
         "airlineTo": "./images/wizz.JPG",
+        "airlineFromValue": "airFrance",
+        "airlineToValue": "wizzAir",
         "baggage": true
 
       },
@@ -168,8 +176,33 @@
         "flightHoursBack": "6 שעות 10 דקות",
         "airlineFrom": "./images/air-france.JPG",
         "airlineTo": "./images/air-france.JPG",
+        "airlineFromValue": "lufthansa",
+        "airlineToValue": "airFrance",
         "baggage": true
 
+      }
+    ],
+    "checkboxes": [
+      {
+        "name": "airFrance",
+        "key": "airFrance",
+        "label": "AirFrance Airlines",
+        "price":  "206",
+        "checked":  false
+      },
+      {
+        "name": "wizzAir",
+        "key": "wizzAir",
+        "label": "WizzAir Airlines",
+        "price":  "649",
+        "checked":  false
+      },
+      {
+        "name": "lufthansa",
+        "key": "lufthansa",
+        "label": "Lufthansa Airlines",
+        "price":  "924",
+        "checked":  false
       }
     ],
     "destinations": [

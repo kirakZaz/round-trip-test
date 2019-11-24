@@ -14,7 +14,7 @@ class MainPage extends React.Component {
 
         this.state = {
             showAside: "block",
-            showButton: "none",
+            showButton: false,
             asideClassAbsolute: false
         }
     }
@@ -35,9 +35,15 @@ class MainPage extends React.Component {
     resize() {
         if(window.innerWidth <= 990){
             this.setState({
-                showButton: "block",
+                showButton: true,
                 showAside: false
             });
+        }
+        if(window.innerWidth >= 990){
+            this.setState({
+                showButton: false,
+                showAside: true
+            })
         }
 
     }
@@ -46,13 +52,15 @@ class MainPage extends React.Component {
     render(){
         const { showButton, asideClassAbsolute, showAside } = this.state;
         const displayAside = showAside ? "block" : "none";
+        const displayButton = showButton ? "block" : "none";
         const position = asideClassAbsolute ? "fixed" : "relative";
+
             return (
                 <div className="MainPage" dir={"rtl"}>
                     <MainSearch/>
                     <Container>
                         <Row>
-                            <div style={{"display": `${showButton}`}}>
+                            <div style={{"display": `${displayButton}`}}>
                                 <Button
                                     className="filterButton"
                                     onClick={this.handleShowAside}
@@ -60,7 +68,7 @@ class MainPage extends React.Component {
                                     {!showAside ? "Filter" : "Close Filter"}
                                 </Button>
                             </div>
-                            <Col style={{"display": `${displayAside}`, "position": `${position}`}} className="asideColumn" xl={12} md={3} lg={3}>
+                            <Col style={{"display": `${displayAside}`, "position": `${position}`}} className="asideColumn" xl={3} md={12} lg={3}>
                                 <Aside/>
                             </Col>
                             <Col xl={9} lg={9} md={12}>

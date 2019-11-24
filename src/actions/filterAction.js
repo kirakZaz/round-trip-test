@@ -5,7 +5,8 @@ const {
     FLIGHT_TIME_THERE,
     FLIGHT_TIME_RETURN,
     FLIGHT_HOURS_THERE,
-    FLIGHT_HOURS_RETURN
+    FLIGHT_HOURS_RETURN,
+    AIRLINES_VALUES
 } = actionTypes;
 export const sendPricesRangeChanges = (pricesRange) => {
     return {
@@ -35,5 +36,11 @@ export const sendFlightHoursReturnChanges = (flightHoursReturn) => {
     return {
         type: FLIGHT_HOURS_RETURN,
         payload: {flightHoursReturn}
+    }
+};
+export const sendCheckboxValues = (airlinesValues) => {
+    return {
+        type: AIRLINES_VALUES,
+        payload: {airlinesValues}
     }
 };

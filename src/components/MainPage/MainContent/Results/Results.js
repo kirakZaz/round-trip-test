@@ -16,15 +16,24 @@ class Results extends React.Component {
             filtersTimeFlightThere: [],
             filtersTimeFlightReturn: [],
             filtersHoursFlightThere: [],
-            filtersHoursFlightReturn: []
+            filtersHoursFlightReturn: [],
+            airlinesValues: []
         }
     }
 
-    componentWillReceiveProps(prevProps) {
-        const { flightTimeThere, flightTimeReturn, flightHoursThere, flightHoursReturn } = this.props.filterData;
-        const { filterData } = this.props;
+    UNSAFE_componentWillReceiveProps(prevProps) {
 
-        if(prevProps.filterData.pricesRange !== filterData.pricesRange) {
+        const {
+            pricesRange,
+            flightTimeThere,
+            flightTimeReturn,
+            flightHoursThere,
+            flightHoursReturn,
+            airlinesValues
+        } = this.props.filterData;
+
+
+        if(prevProps.filterData.pricesRange !== pricesRange) {
             this.filteredPricesResults()
         }
         if(prevProps.filterData.flightTimeThere !== flightTimeThere) {
@@ -39,7 +48,45 @@ class Results extends React.Component {
         if(prevProps.filterData.flightHoursReturn !== flightHoursReturn) {
             this.filteredHoursReturnResults()
         }
+        if(prevProps.filterData.airlinesValues !== airlinesValues) {
+            this.filteredAirlinesResults(prevProps.filterData.airlinesValues);
+        }
     }
+
+    filteredAirlinesResults = (args) => {
+        const checked = args;
+        this.setState({
+            airlinesResults: checked
+        }, () => this.checkboxedData())
+    };
+
+    checkboxedData = (args) => {
+
+
+        const { airlinesResults, resultsList } = this.state;
+        const { airlinesValues } = this.props.filterData;
+        const clearFilteredResult = [];
+        const cleared = [];
+        console.log("args", args, "|",resultsList)
+        const x = resultsList.map(item => {
+            return airlinesResults && Object.keys(airlinesResults).map(key => {
+                if(airlinesValues[key] === true && item.airlineToValue === key) {
+                    return item.id
+                }
+            });
+        });
+
+        x.forEach((obj) => clearFilteredResult.push(...obj));
+        const r = clearFilteredResult.filter(item => {return item !== undefined});
+        const filteredResult = r.map(x=>{
+            return resultsList.filter((f)=>{return x === f.id})
+        });
+
+        filteredResult.forEach((obj) => cleared.push(...obj));
+        const v = filteredResult.map(item => { return item[0] });
+
+        return v
+    };
 
     filteredPricesResults = () => {
         const { resultExamples } = data;
@@ -168,7 +215,10 @@ class Results extends React.Component {
             filtersTimeFlightThere,
             filtersTimeFlightReturn,
             filtersHoursFlightThere,
-            filtersHoursFlightReturn
+            filtersHoursFlightReturn,
+            airlinesValues,
+            airlinesResults,
+            resultsList
         } = this.state;
 
         const filteredPricesValues = filteredPrices.map(r => { return r.id });
@@ -195,6 +245,7 @@ class Results extends React.Component {
     };
 
     render(){
+        console.log(this.state)
         const { resultsList } = this.state;
         return(
             <div className={"Results"}>

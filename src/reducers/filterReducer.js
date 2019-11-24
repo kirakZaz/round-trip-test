@@ -5,7 +5,8 @@ const {
     FLIGHT_TIME_THERE,
     FLIGHT_TIME_RETURN,
     FLIGHT_HOURS_THERE,
-    FLIGHT_HOURS_RETURN
+    FLIGHT_HOURS_RETURN,
+    AIRLINES_VALUES
 } = actionTypes;
 
 const initialState = {
@@ -14,6 +15,11 @@ const initialState = {
     flightTimeReturn: [],
     flightHoursThere: [],
     flightHoursReturn: [],
+    airlinesValues: {
+        wizzAir: false,
+        airFrance: false,
+        lufthansa: false,
+    }
 };
 
 export default (state = initialState, action) => {
@@ -48,6 +54,13 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 flightHoursReturn
+            };
+        case AIRLINES_VALUES:
+            const { airlinesValues } = action.payload;
+            return {
+                ...state,
+                airlinesValues
+
             };
 
         default:
