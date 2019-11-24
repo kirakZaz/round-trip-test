@@ -3,6 +3,15 @@
 .Aside{
   margin-top: 20px;
   border-radius: 5px;
+
+  span.filterResults {
+    font-size: 14px;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 3px;
+    color: #f15731;
+  }
   .borderBottom{
     border-bottom: 1px solid #e2e2e2;
     a{

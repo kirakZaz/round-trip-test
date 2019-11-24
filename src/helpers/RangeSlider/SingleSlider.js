@@ -9,7 +9,7 @@ import "./RangeSlider.scss"
 const Handle = Slider.Handle;
 
 
-function RangeSlider(props) {
+function SingleSlider(props) {
     const { min, max, defaultValue, marks, tipFormatter, onChange } = props;
 
 
@@ -33,7 +33,7 @@ function RangeSlider(props) {
     };
 
     return(
-        <Range
+        <Slider
             min={min}
             max={max}
             defaultValue={defaultValue}
@@ -47,7 +47,4 @@ function RangeSlider(props) {
 
 }
 
-export default RangeSlider;
-
-
-
+export default SingleSlider;

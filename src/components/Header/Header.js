@@ -63,8 +63,7 @@ class Header extends React.Component {
             <div className={"header"}>
                 <Container>
                     <Row>
-
-                        <Col  xl={8} lg={8} md={2} sm={2} xs={3} className="navigation order-lg-3" navigation order-md-1 col-xl-8 col-md-2>
+                        <Col xl={8} lg={8} md={2} sm={2} xs={3} className="navigation order-lg-3">
                             <div style={{"display": `${showButton}`}}>
                                 <Button
                                     className="filterButton"
@@ -72,7 +71,7 @@ class Header extends React.Component {
                                 >
                                     {!showMenu
                                         ? <i className="fa fa-bars" aria-hidden="true"></i>
-                                        : <i class="fa fa-times" aria-hidden="true"></i>
+                                        : <i className="fa fa-times" aria-hidden="true"></i>
                                     }
                                 </Button>
                             </div>

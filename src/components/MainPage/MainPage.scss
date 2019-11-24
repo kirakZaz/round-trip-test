@@ -24,10 +24,12 @@
   .asideColumn{
 
     @include smScreen{
-      top: -20px;
-      z-index: 99999;
+      top: -16px;
+      z-index: 99999999;
       left: -15px;
       width: 60%;
+      overflow-y: scroll;
+      height: 100vh;
     }
   }
 }

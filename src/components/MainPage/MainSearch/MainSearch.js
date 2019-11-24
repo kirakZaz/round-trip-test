@@ -56,7 +56,7 @@ class MainSearch extends React.Component {
     destinationsRadio = () => {
         return(
             <Form.Row style={{height: "39px"}}>
-                <Col col-12 col-xs-4>
+                <Col className='col-12 col-xs-4'>
                     <div className="mb-0 color-white font14">
                         <Container>
                             <Form.Group as={Row}>

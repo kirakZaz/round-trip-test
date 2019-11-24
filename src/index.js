@@ -5,6 +5,14 @@ import App from './components/App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-rangeslider/lib/index.css'
 import * as serviceWorker from './serviceWorker';
+import configStore from './store/configStore';
+import { Provider } from 'react-redux';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const store = configStore();
+
+ReactDOM.render(
+    <Provider store={store}>
+        <App/>
+    </Provider>
+    , document.getElementById('root'));
 serviceWorker.unregister();
