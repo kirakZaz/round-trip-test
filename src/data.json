@@ -64,8 +64,8 @@
         "flightHoursBack": "16 שעות 10 דקות",
         "airlineFrom": "images/air-france.JPG",
         "airlineTo": "/../../../../images/wizz.JPG",
-        "airlineFromValue": "airFrance",
-        "airlineToValue": "wizzAir",
+        "airlineFromValue": "wizzAir",
+        "airlineToValue": "lufthansa",
         "baggage": true
 
       },
@@ -93,7 +93,7 @@
         "airlineFrom": "../../../../images/lufthansa.JPG",
         "airlineTo": "../../../../images/lufthansa.JPG",
         "airlineFromValue": "airFrance",
-        "airlineToValue": "lufthansa",
+        "airlineToValue": "airFrance",
         "baggage": false
 
       },
@@ -149,7 +149,7 @@
         "airlineFrom": "./images/air-france.JPG",
         "airlineTo": "./images/wizz.JPG",
         "airlineFromValue": "airFrance",
-        "airlineToValue": "wizzAir",
+        "airlineToValue": "lufthansa",
         "baggage": true
 
       },
@@ -177,7 +177,7 @@
         "airlineFrom": "./images/air-france.JPG",
         "airlineTo": "./images/air-france.JPG",
         "airlineFromValue": "lufthansa",
-        "airlineToValue": "airFrance",
+        "airlineToValue": "lufthansa",
         "baggage": true
 
       }

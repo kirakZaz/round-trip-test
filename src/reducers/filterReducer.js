@@ -15,11 +15,11 @@ const initialState = {
     flightTimeReturn: [],
     flightHoursThere: [],
     flightHoursReturn: [],
-    airlinesValues: {
-        wizzAir: false,
-        airFrance: false,
-        lufthansa: false,
-    }
+    airlinesValues: [
+        {"name":"wizzAir", "value":true},
+        {"name":"airFrance", "value": true},
+        {"name":"lufthansa", "value":true}
+    ]
 };
 
 export default (state = initialState, action) => {

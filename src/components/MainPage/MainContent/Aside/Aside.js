@@ -20,11 +20,14 @@ class Aside extends React.Component {
             flightHoursThere: 12,
             flightHoursReturnString: "12:00",
             flightHoursThereString: "12:00",
-            checkedValues: {
-                "wizzAir": false,
-                "airFrance": false,
-                "lufthansa": false
-            }
+            checkedValues: [
+                {"name":"wizzAir", "value":true},
+                {"name":"airFrance", "value": true},
+                {"name":"lufthansa", "value":true}
+            ],
+            lufthansaIsChecked: true,
+            wizzAirIsChecked: true,
+            airFranceIsChecked: true,
 
 
 
@@ -95,28 +98,31 @@ class Aside extends React.Component {
 
     handleCheckbox = (e) => {
         const { sendCheckboxValues } = this.props;
-        const { checkedValues } = this.state;
         const name = e.target.name;
         const isChecked = e.target.checked;
+        const nameIsChecked = name + "IsChecked"
 
+        const index = this.state.checkedValues.findIndex(x=> x.name === name);
 
-        const values = {...this.state.checkedValues, [name]: isChecked}
-        // console.log("values", values)
+        const values = [
+            ...this.state.checkedValues.slice(0, index),
+            Object.assign({}, this.state.checkedValues[index], {value: isChecked}),
+            ...this.state.checkedValues.slice(index + 1)
+        ];
 
-
-
-        this.setState(prevState => ({
-            checkedValues: {
-                ...prevState.checkedValues,
-                [name]: isChecked
-            }
-        }));
-
+        if (index === -1){
+            console.log("handle error")
+        }
+        else {
+            this.setState({
+                checkedValues: values,
+                [nameIsChecked]: isChecked
+            });
+        }
         sendCheckboxValues(values)
     };
 
     render(){
-        // console.log(this.state)
         const {
             priceValues,
             flightTimeThere,

@@ -57,35 +57,42 @@ class Results extends React.Component {
         const checked = args;
         this.setState({
             airlinesResults: checked
-        }, () => this.checkboxedData())
+        }, () => this.concatedData())
     };
 
     checkboxedData = (args) => {
-
-
-        const { airlinesResults, resultsList } = this.state;
         const { airlinesValues } = this.props.filterData;
-        const clearFilteredResult = [];
-        const cleared = [];
-        console.log("args", args, "|",resultsList)
-        const x = resultsList.map(item => {
-            return airlinesResults && Object.keys(airlinesResults).map(key => {
-                if(airlinesValues[key] === true && item.airlineToValue === key) {
-                    return item.id
-                }
-            });
+        const { resultExamples } = data;
+
+        const airlineFromChecked = airlinesValues.map(x => {
+            return args.filter(item => {
+                return (item.airlineFromValue === x.name && x.value === true)
+            })
+        });
+        const airlineToChecked = airlinesValues.map(x => {
+            return args.filter(item => {
+                return (item.airlineToValue === x.name && x.value === true)
+            })
         });
 
-        x.forEach((obj) => clearFilteredResult.push(...obj));
-        const r = clearFilteredResult.filter(item => {return item !== undefined});
-        const filteredResult = r.map(x=>{
-            return resultsList.filter((f)=>{return x === f.id})
+        const airlineFromCheckedArr = airlineFromChecked.flat();
+        const airlineToCheckedArr = airlineToChecked.flat();
+        const airlinesArr = airlineFromCheckedArr.concat(airlineToCheckedArr)
+        const airlinesArrIds = airlinesArr.map(id => id.id)
+        const findAllDuplicates = this.find_duplicate_in_array(airlinesArrIds);
+
+        const filteredResult = findAllDuplicates.map(x=>{
+            return resultExamples.filter((f)=>{
+                return x === f.id
+            })
+
         });
+        const res = filteredResult.flat();
+        this.setState({
+            resultsList: res
+        })
+        return res
 
-        filteredResult.forEach((obj) => cleared.push(...obj));
-        const v = filteredResult.map(item => { return item[0] });
-
-        return v
     };
 
     filteredPricesResults = () => {
@@ -185,18 +192,18 @@ class Results extends React.Component {
         const resultExamplesPricesValues = resultExamples.map(prices => { return prices.id});
 
         let filters = [];
+        const clearFilteredResult = [];
 
         if(filter1.length > 0 && filter2.length <= 0  && filter3.length <= 0  && filter4.length <= 0  && filter5.length <= 0) {
             filters = filter1
         } else if(filter1.length <= 0) {
             filters = filter2.concat(filter3, filter4, filter5)
         } else {
-            const filtersTocheck = filter2.concat(filter3, filter4, filter5)
+            const filtersTocheck = filter2.concat(filter3, filter4, filter5);
             filters = _.intersectionWith(filtersTocheck, filter1, _.isEqual);
         }
 
         const findAllDuplicates = this.find_duplicate_in_array(filters);
-
         const checkedDuplicates = findAllDuplicates.length <= 0 ? filters : findAllDuplicates;
         const duplicatesValues = _.intersectionWith(checkedDuplicates, resultExamplesPricesValues, _.isEqual);
         const filteredResult = duplicatesValues.map(x=>{
@@ -205,8 +212,9 @@ class Results extends React.Component {
             })
 
         });
-        const clearFilteredResult = [];
+
         filteredResult.forEach((obj) => clearFilteredResult.push(...obj));
+
         return clearFilteredResult
     };
 
@@ -216,9 +224,6 @@ class Results extends React.Component {
             filtersTimeFlightReturn,
             filtersHoursFlightThere,
             filtersHoursFlightReturn,
-            airlinesValues,
-            airlinesResults,
-            resultsList
         } = this.state;
 
         const filteredPricesValues = filteredPrices.map(r => { return r.id });
@@ -238,14 +243,14 @@ class Results extends React.Component {
             filtersHoursFlightThereValues,
             filtersHoursFlightReturnValues
         );
+        const res = this.checkboxedData(resFinal);
 
         this.setState({
-            resultsList: resFinal
+            resultsList: res
         })
     };
 
     render(){
-        console.log(this.state)
         const { resultsList } = this.state;
         return(
             <div className={"Results"}>
@@ -266,7 +271,7 @@ class Results extends React.Component {
                                                     : <img src={"/../../../../images/no-baggage.JPG"} alt={""}/>
                                             }</span>
                                             </span>
-                                        <span style={{"background": "url(" + item.airlineFrom + ")"}}/>
+                                        <span style={{"background": "url(" + item.airlineFrom + ")"}}>{item.airlineFromValue}</span>
                                     </Col>
                                     <Col xs={10}>
                                         <Row>
@@ -290,6 +295,7 @@ class Results extends React.Component {
                                 </Row>
                                 <Row className={"flightInfo flightReturn"}>
                                     <Col xs={2}>
+                                        <span style={{"background": "url(" + item.airlineFrom + ")"}}>{item.airlineToValue}</span>
                                     </Col>
                                     <Col xs={10}>
                                         <Row>
